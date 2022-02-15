@@ -1,10 +1,22 @@
+import java.util.Scanner;
+
 public class Kaprekar {
     public static void main(String[] args) {
-        // the algorithm only works for 4 digit numbers
-        for(int i = 1000; i < 9999;i++)
-            // the algorithm does not work for the numbers such 'aaaa'
-            if(i % 1111 != 0)
-                System.out.println(i + " ends up as " + kaprekar(i));
+        Scanner inp = new Scanner(System.in);
+        System.out.println("If you want to look at every valid number type 0");
+        System.out.print("Please enter a 4 digit number: ");
+        int number = inp.nextInt();
+        if(number >= 1000 && number < 9999 && number % 1111 != 0)
+            System.out.println("number " + number + " ends up as " + kaprekar(number));
+        // the algorithm only works for 4 digit number
+        else if(number == 0) {
+            for (int i = 1000; i < 9999; i++)
+                // the algorithm does not work for the numbers such 'aaaa'
+                if (i % 1111 != 0)
+                    System.out.println(i + " ends up as " + kaprekar(i));
+        }
+        else
+            System.out.println(number + " is not a valid number");
     }
     static int kaprekar(int num){
         // creating an array to store all the digits of num
